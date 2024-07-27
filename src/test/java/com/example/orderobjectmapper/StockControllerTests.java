@@ -48,7 +48,7 @@ public class StockControllerTests {
     }
 
     @Test
-    public void testGetAllProducts() throws Exception {
+    public void shouldReturnAllProducts_whenNoFiltersApplied() throws Exception {
         Product product = new Product(1L, "Product 1", 10.99, 100);
         when(stockService.getAllProducts()).thenReturn(Collections.singletonList(product));
         
@@ -63,7 +63,7 @@ public class StockControllerTests {
     }
 
     @Test
-    public void testGetProductById() throws Exception {
+    public void shouldReturnProductById_whenIdExists() throws Exception {
         Product product = new Product(1L, "Product 1", 10.99, 100);
         when(stockService.getProductById(1L)).thenReturn(product);
 
@@ -79,7 +79,7 @@ public class StockControllerTests {
     }
 
     @Test
-    public void testCreateNewProduct() throws Exception {
+    public void shouldCreateNewProduct_whenProductIsValid() throws Exception {
         Product product = new Product(null, "New Product", 15.99, 50);
         Product createdProduct = new Product(1L, "New Product", 15.99, 50);
         when(stockService.createNewProduct(any(Product.class))).thenReturn(createdProduct);
@@ -96,7 +96,7 @@ public class StockControllerTests {
     }
 
     @Test
-    public void testUpdateProduct() throws Exception {
+    public void shouldUpdateProduct_whenProductIsValid() throws Exception {
         Product product = new Product(1L, "Updated Product", 20.99, 25);
         when(stockService.updateProduct(any(Product.class))).thenReturn(product);
         
@@ -111,7 +111,7 @@ public class StockControllerTests {
     }
 
     @Test
-    public void testDeleteProduct() throws Exception {
+    public void shouldDeleteProduct_whenIdExists() throws Exception {
         Product product = new Product(1L, "Product to Delete", 10.99, 100);
         when(stockService.deleteProductById(1L)).thenReturn(product);
         
@@ -127,7 +127,7 @@ public class StockControllerTests {
 
 
     @Test
-    public void testCreateOrder() throws Exception {
+    public void shouldCreateOrder_whenOrderIsValid() throws Exception {
         Customer customer = Customer.builder()
                 .firstName("John")
                 .lastName("Doe")
@@ -175,7 +175,7 @@ public class StockControllerTests {
     }
 
     @Test
-    public void testGetOrderById() throws Exception {
+    public void shouldReturnOrderById_whenIdExists() throws Exception {
         Customer customer = Customer.builder()
                 .firstName("John")
                 .lastName("Doe")
